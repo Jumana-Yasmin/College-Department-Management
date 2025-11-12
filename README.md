@@ -1,10 +1,10 @@
-# 🎓 College Department Management System
+# College Department Management System
 
 A Flask + MySQL–based web application designed to efficiently manage departmental, faculty, and student data through structured database operations and backend automation.  
 
 ---
 
-## 📘 Overview
+## Overview
 
 The **College Department Management System** streamlines core academic operations by automating administrative tasks such as managing departments, faculty, students, attendance, complaints, and fee structures.  
 It focuses on **structured data handling and relational database design**, providing a clear and efficient backend for educational institutions.
@@ -37,7 +37,7 @@ It focuses on **structured data handling and relational database design**, provi
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-------------|
@@ -48,7 +48,7 @@ It focuses on **structured data handling and relational database design**, provi
 
 ---
 
-## 🗂️ Database Design
+## Database Design
 
 The system uses a **relational database** built on MySQL.  
 Major tables include:
@@ -65,3 +65,11 @@ Major tables include:
 - `scholarship` – Scholarship records  
 
 All tables are linked through **foreign key relationships** ensuring data consistency and integrity.
+
+## How to Run
+
+### Clone or Download
+Download this repository or clone it using:
+```bash
+git clone https://github.com/Jumana-Yasmin/College-Department-Management
+
