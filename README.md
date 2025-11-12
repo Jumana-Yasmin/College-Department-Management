@@ -72,7 +72,7 @@ All tables are linked through **foreign key relationships** ensuring data consis
 Download this repository or clone it using:
 ```bash
 git clone https://github.com/Jumana-Yasmin/College-Department-Management
-
+```
 ## Author
 **Jumana Yasmin**  
 Data Analyst | Python • SQL • Power BI • Machine Learning • Excel  
