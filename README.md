@@ -73,3 +73,9 @@ Download this repository or clone it using:
 ```bash
 git clone https://github.com/Jumana-Yasmin/College-Department-Management
 
+## Author
+**Jumana Yasmin**  
+Data Analyst | Python • SQL • Power BI • Machine Learning • Excel  
+📧 [jumanayasmi@gmail.com](mailto:jumanayasmi@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/jumanayasmin)
+
