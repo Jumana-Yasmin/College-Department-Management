@@ -1,0 +1,327 @@
+{% include 'adminheader.html' %}
+
+
+
+      <form method="post">
+            {% if data['res'] %}
+<!--         
+            <table>
+                <tr>
+                    <th>Department Name : </th>
+                    <td><input type="text" name="name" class="form-control" value="{{data['res'][0]['d_name']}}"></td>
+                </tr>
+               
+                <tr>
+                    <th>Phone : </th>
+            
+                    <td><input type="text" name="phone" class="form-control" value="{{data['res'][0]['d_phone']}}"></td>
+                </tr>
+                <tr>
+                    <th>Email : </th>
+            
+                    <td><input type="text" name="mail" class="form-control" value="{{data['res'][0]['d_mail']}}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="edit" value="Update" class="a btn-get-startded"></td>
+                </tr>
+            </table> -->
+                
+                <div class="inset">
+                <p>
+                  <label for="email">Department Name</label>
+                  <input type="text" name="name" id="email" value="{{data['res'][0]['d_name']}}">
+                </p>
+                <p>
+                    <label for="email">Phone</label>
+                    <input type="text" name="phone" id="email" value="{{data['res'][0]['d_phone']}}">
+                  </p>
+                <p>
+                  <label for="password">Email</label>
+                  <input type="text" name="mail" id="password" value="{{data['res'][0]['d_mail']}}">
+                </p>
+                </div>
+                <p class="p-container">
+                  <input type="submit" name="edit" value="Update">
+                </p>
+              </form>
+        
+        {% else %}
+        <!-- <table>
+            <tr>
+                <th> Department Name : </th>
+        
+                <td><input type="text" name="name" class="form-control"></td>
+            </tr>
+            <tr>
+                  <th> User Name : </th>
+          
+                  <td><input type="text" name="uname" class="form-control"></td>
+              </tr>
+              <tr>
+                  <th> Password : </th>
+          
+                  <td><input type="password" name="pwd" class="form-control"></td>
+              </tr>
+
+            <tr>
+                <th>Phone  : </th>
+        
+                <td><input type="text" name="phone" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Email : </th>
+        
+                <td><input type="text" name="mail" class="form-control"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Add" class="btn-get-started a"></td>
+            </tr> -->
+
+
+
+ 
+            <div class="inset">
+                <p>
+                  <label for="email">Department Name</label>
+                  <input type="text" name="name" id="email" >
+                </p>
+                <p>
+                    <label for="email">User Name</label>
+                    <input type="text" name="uname" id="email" >
+                  </p>
+                  <p>
+                    <label for="password">PASSWORD</label>
+                    <input type="password" name="pwd" id="password">
+                  </p>
+                <p>
+                    <label for="email">Phone</label>
+                    <input type="text" name="phone" id="email">
+                  </p>
+                <p>
+                  <label for="password">Email</label>
+                  <input type="text" name="mail" id="password" >
+                </p>
+                </div>
+                <p class="p-container">
+                  <input type="submit" name="submit" value="ADD">
+                </p>
+              </form>
+
+
+
+
+
+
+            {% endif %}
+        </table>
+        </form>
+
+
+
+
+
+
+
+
+
+
+        {% if data['dpt'] %}
+        <table align="center" style="text-align: center; backdrop-filter: blur(500px); margin-top: 100px;">
+
+            <tr class="tr">
+                <th>Sl.</th>
+                <th>Department</th>
+                <th>Phone</th>
+
+                <th>Email</th>
+            </tr>
+            {% for row in data['dpt'] %}
+            <tr class="tr">
+                <td>{{loop.index}}</td>
+                <td>{{row['d_name']}}</td>
+                <td>{{row['d_phone']}}</td>
+                <td>{{row['d_mail']}}</td>
+           
+                <td><a href="?action=update&id={{row['dept_id']}}&lid={{row['login_id']}}" class=" btn btn-outline-success">update</a></td>
+                <td><a href="?action=delete&id={{row['dept_id']}}&lid={{row['login_id']}}" class="btn btn-danger">delete</a></td>
+                <td><a href="admin_view_faculties?id={{row['dept_id']}}" class="btn btn-info">View Faculties</a></td>
+        
+            </tr>
+            {% endfor %}
+        </table>
+        <style>
+            th,
+            td {
+                font-size: 20px;
+                padding: 15px;
+            }
+        
+            th{
+                color:rgb(0, 0, 0);
+            }
+            td{
+                color:rgb(255, 255, 255);
+            }
+         
+        </style>
+        {% endif %}
+
+
+      
+{% include 'footer.html' %}
+
+
+
+<style>
+    @import "compass/css3";
+
+* { box-sizing: border-box; }
+
+body {
+	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  color:white;
+  font-size:12px;
+  background:rgb(25, 64, 66);
+}
+
+form {
+ 	backdrop-filter: blur(10px); 
+  width:300px;
+  margin:30px auto;
+  border-radius:0.4em;
+  border:1px solid #191919;
+  overflow:hidden;
+  position:relative;
+  box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+}
+
+form:after {
+  content:"";
+  display:block;
+  position:absolute;
+  height:1px;
+  width:100px;
+  left:20%;
+  background:linear-gradient(left, #111, #444, #b6b6b8, #444, #111);
+  top:0;
+}
+
+form:before {
+ 	content:"";
+  display:block;
+  position:absolute;
+  width:8px;
+  height:5px;
+  border-radius:50%;
+  left:34%;
+  top:-7px;
+  box-shadow: 0 0 6px 4px #fff;
+}
+
+.inset {
+ 	padding:20px; 
+  border-top:1px solid white;
+}
+
+form h1 {
+  font-size:18px;
+  text-shadow:0 1px 0 white;
+  text-align:center;
+  padding:15px 0;
+  border-bottom:1px solid rgba(0,0,0,1);
+  position:relative;
+}
+
+form h1:after {
+ 	content:"";
+  display:block;
+  width:250px;
+  height:100px;
+  position:absolute;
+  top:0;
+  left:50px;
+  pointer-events:none;
+  transform:rotate(70deg);
+  background:linear-gradient(50deg, rgba(255,255,255,0.15), rgba(0,0,0,0));
+  
+}
+
+label {
+ 	color:white;
+  display:block;
+  padding-bottom:9px;
+}
+
+input[type=text],
+input[type=password] {
+ 	width:100%;
+  padding:8px 5px;
+  background:linear-gradient(#1f2124, #27292c);
+  border:1px solid #222;
+  box-shadow:
+    0 1px 0 rgba(158, 15, 15, 0.1);
+  border-radius:0.3em;
+  margin-bottom:20px;
+  color: white;
+}
+
+label[for=remember]{
+ 	color:white;
+  display:inline-block;
+  padding-bottom:0;
+  padding-top:5px;
+}
+
+input[type=checkbox] {
+ 	display:inline-block;
+  vertical-align:top;
+}
+
+.p-container {
+ 	padding:0 20px 20px 20px; 
+}
+
+.p-container:after {
+ 	clear:both;
+  display:table;
+  content:"";
+}
+
+.p-container span {
+  display:block;
+  float:left;
+  color:#0d93ff;
+  padding-top:8px;
+}
+
+input[type=submit] {
+ 	padding:5px 20px;
+  border:1px solid rgba(0,0,0,0.4);
+  text-shadow:0 -1px 0 rgba(228, 219, 219, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 10px 10px rgba(255,255,255,0.1);
+  border-radius:0.3em;
+  background:#0184ff;
+  color:white;
+  float:right;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:13px;
+}
+
+input[type=submit]:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -10px 10px rgba(255,255,255,0.1);
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+label:hover ~ input[type=text],
+label:hover ~ input[type=password] {
+ 	background:#2f4269;
+}
+</style>

@@ -1,0 +1,90 @@
+{% include 'department_header.html' %}
+<section id="hero" class="d-flex align-items-center"
+    style="height: 1000px; ">
+
+    <div class="container">
+        <center>
+            <form action="" method="post" style="margin-top: -100px;">
+                <table>
+                    <tr>
+                        <th style="color: white; font-size: 25px;">Student</th>
+                        <td>
+                            <select name="student" id="" class="form-control">
+                                <option value="">Select</option>
+
+                                {% for row in data['res'] %}
+
+                                <option value="{{row['stud_id']}}">{{row['s_name']}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color: white; font-size: 25px;">Period</th>
+                        <td><select name="pd" id="">
+                            <option value="">Select</option>
+                            <option value="1">Period 1</option>
+                            <option value="2">Period 2</option>
+                            <option value="3">Period 3</option>
+                            <option value="4">Period 4</option>
+                            <option value="5">Period 5</option>
+                        </select></td>
+
+                    </tr>
+                    <tr>
+                        <th style="color: white; font-size: 25px;">Date</th>
+                        <td><input type="date" name="date" id="" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <th style="color: white; font-size: 25px;">Attendance</th>
+                        <td><input type="radio" name="attendance" id="" value="present">PRESENT
+                            <input type="radio" name="attendance" id="" value="absent">ABSENT
+                        </td>
+                    </tr>
+
+                    <tr> <td align="center" colspan="3"><input type="submit" value="SUBMIT" name="submit" class="btn btn-success"></tr></td>
+
+                </table>
+            </form>
+            {% if data['view'] %}
+
+            <table align="center" style="text-align: center; backdrop-filter: blur(500px); margin-top: 100px;">
+
+                <tr>
+                    <th>Sl no.</th>
+                    <th>Student</th>
+                    <th>Period</th>
+                    <th>Date</th>
+                    <th>Attendance</th>
+                </tr>
+                {% for row in data['view'] %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{row['s_name']}}</td>
+                    <td>{{row['period']}}</td>
+                    <td>{{row['date']}}</td>
+                    <td>{{row['attendance']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+</section>
+<style>
+    th,
+    td {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    th {
+        color: rgb(0, 0, 0);
+    }
+
+    td {
+        color: rgb(255, 255, 255);
+    }
+</style>
+{% endif %}
+
+
+{% include 'footer.html' %}

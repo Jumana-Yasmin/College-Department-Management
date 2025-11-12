@@ -1,0 +1,42 @@
+{% include 'department_header.html' %}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+
+    <div class="container"> 
+        <center>
+
+<form action="" method="post" style="margin-top: -160px;">
+    <table>
+        <tr>
+            <th style="font-size: 25px; color: rgb(0, 0, 0);">Subject</th>
+            <td><input type="text" value="" name="sbj" class="form-control"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td ><input type="submit" value="SUBMIT" name="submit" class=" btn btn-success" style="margin-top: 30px;"></td>
+        </tr>
+    </table>
+</form>
+
+
+{% if data['res'] %}
+     
+<table align="center" style="text-align: center; backdrop-filter: blur(50px); margin-top: 100px;">
+
+            <tr class="tr">
+        <th style="padding: 15px; color: black; font-size: 25px; background-color:rgba(255, 255, 255, 0.314) ;">SL.NO</th>
+        <th style="padding: 15px; color: black; font-size: 25px; background-color:rgba(255, 255, 255, 0.314) ;">Subject</th>
+            </tr>
+            {% for row in data['res'] %}
+            <tr class="tr">
+                <td style="padding: 15px; color: black;">{{loop.index}}</td>
+                <td style="padding: 15px; color: black;">{{row['sub_name']}}</td>
+           
+
+            </tr>
+            {% endfor %}
+        </table>
+      
+        {% endif %}
+        </div>
+    </section>
+{% include 'footer.html' %}

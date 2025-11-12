@@ -1,0 +1,78 @@
+{% include 'department_header.html' %}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   ">
+
+    <div class="container">
+<center>
+<form action="" method="post" style="margin-top: -400px;" onsubmit="return validateForm()">
+    <table>
+        <tr>
+            <th style="font-size: 25px; color: black;">Student</th>
+            <td>
+                <select name="student" id="" class="form-control">
+                    <option value="">Select</option>
+                    {% for row in data['stud'] %}
+                    <option value="{{row['stud_id']}}">{{row['s_name']}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 25px; color: black;">Subject</th>
+            <td>
+                <select name="sub" id="" class="form-control">
+                    <option value="">Select</option>
+                    {% for row in data['sub'] %}
+                    <option value="{{row['sub_id']}}">{{row['sub_name']}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th style="font-size: 25px; color: black;">Mark Awarded</th>
+            <td><input type="text" name="ma" class="form-control"></td>
+        </tr>
+        <tr>
+            <th style="font-size: 25px; color: black;">Total</th>
+            <td><input type="text" name="gt" id="" class="form-control"></td>
+        </tr>
+        <tr>        
+            <th style="font-size: 25px; color: black;">Result</th>
+            <td><input type="text" name="result" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" name="submit" class="btn btn-danger" style="margin-top: 30px;"></td>
+        </tr>
+
+    </table>
+</form>
+</div>
+</section>
+
+
+<script>
+    function validateForm() {
+        var ma = document.forms[0]["ma"].value;
+        var gt = document.forms[0]["gt"].value;
+        var result = document.forms[0]["result"].value;
+    
+        if (ma === "" || isNaN(ma)) {
+            alert("Please enter a valid Mark Awarded value (numeric only).");
+            return false;
+        }
+    
+        if (gt === "" || isNaN(gt)) {
+            alert("Please enter a valid Grand Total value (numeric only).");
+            return false;
+        }
+    
+        if (result === "") {
+            alert("Please enter a valid Result.");
+            return false;
+        }
+    
+        return true;
+    }
+    
+</script>
+{% include   'footer.html' %}

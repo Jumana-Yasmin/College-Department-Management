@@ -1,0 +1,115 @@
+{% include 'adminheader.html' %}
+
+    <style>
+        #hero {
+            height: 1000px;
+            position: relative;
+        }
+
+       
+
+       
+
+        /* Other existing styles remain unchanged */
+        th, td {
+            font-size: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            color: rgb(14, 14, 14);
+        }
+
+        td {
+            color: rgb(250, 250, 253);
+        }
+
+        h1 {
+            color: rgb(10, 10, 10);
+        }
+    </style>
+
+
+
+
+    <section id="hero" class="d-flex align-items-center" style=" background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+     
+        <div  class="container">
+            <!-- Your existing HTML content here -->
+
+            <!-- Form Section -->
+          
+            <form method="post" id="myForm" style="margin-top: -200px;" >
+                <table align="center" >
+                    <tr>
+                        <td>
+                            <select id="registrationType" name="dept" class="form-control" style="width:200px;text-align: center;">
+                                <option value="">Select</option>
+                                {% for i in data['view'] %}
+                                <option value="{{i['dept_id']}}">{{i['d_name']}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input class="btn btn-primary" type="submit" name="submit" id="submitBtn"></td>
+                    </tr>
+                </table>
+            </form>
+            
+       
+
+            <!-- Result Display Section -->
+            
+                {% if data['res'] %}
+                <table align="center" id="resultSection"  style="text-align: center; backdrop-filter: blur(80px);">
+                    <thead >
+                    <tr class="tr">
+                        <th>Sl.</th>
+                        <th>Student</th>
+                        <th>Department</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                    {% for row in data['res'] %}
+                    <tr class="tr">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ row['s_name'] }}</td>
+                        <td>{{ row['d_name'] }}</td>
+                        <td>{{ row['s_phone'] }}</td>
+                        <td>{{ row['s_mail'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <!-- Displayed when no data is available -->
+                <h1>no data</h1>
+                {% endif %}
+          
+
+        </div>
+ 
+    </section>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Submit form using AJAX
+            $("#submitBtn").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/your-form-endpoint", // Replace with your actual form endpoint
+                    data: $("#myForm").serialize(),
+                    success: function (response) {
+                        // Update the result section with the new data
+                        $("#resultSection").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+{% include 'footer.html'%}

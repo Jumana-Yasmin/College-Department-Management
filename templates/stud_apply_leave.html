@@ -1,0 +1,79 @@
+{%include 'student_header.html'%}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+
+<!-- <h2>Apply Leave</h2> -->
+<form action="" method="post" >
+<table align="center"   style="margin-left: 600px;margin-bottom: 350px;backdrop-filter: blur(50px);">
+    <tr>
+        <th style="font-size: 25px;">Date</th>
+        <td><input type="date" class="form-control " name="date" id=""></td>
+    </tr>
+    <tr>
+        <th style="color:rgb(45, 45, 67); font-size: 25px; background-color: rgba(240, 248, 255, 0.149);">Reason</th>
+        <td><textarea name="reason" id="" style="border: black solid 3px;" class="form-control" cols="18" rows="7"></textarea></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" name="submit" value="Apply" id="" class="btn btn-danger"></td>
+    </tr>
+
+</table>
+</form>
+
+{%if data['res']%}
+
+
+  
+     
+<table style="backdrop-filter: blur(50px);margin-top: 300px;margin-left: -350px;width:500px"  >
+    <tr>
+        <th></th>
+        <th></th>
+       
+        <th><h1 style="font-size: 25px;color: black;">Leave Status</h1></th>
+
+    </tr>
+   
+     
+    <tr>
+        <th>Sl no</th>
+        <th>Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+    </tr>
+    
+    
+    {%for i in data['res']%}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i['date']}}</td>
+        <td>{{i['reason']}}</td>
+        <td>{{i['status']}}</td>
+    </tr>
+    {%endfor%}
+    
+    </table>
+
+    {%endif%}
+
+</section>
+
+
+
+
+
+
+
+<style>
+    th,td{
+        padding: 10px;
+        color: black;
+    }
+    td{
+        color: rgb(6, 6, 6);
+    }
+
+
+</style>
+
+{%include 'footer.html'%}

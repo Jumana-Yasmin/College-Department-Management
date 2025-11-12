@@ -1,0 +1,50 @@
+{% include 'adminheader.html' %}
+<form action="" style="background-color: rgba(127, 150, 255, 0.29);">
+<center>
+      <h2 style="font-size: 35px; color: black; ">View Faculties</h2>
+
+    </center>
+      {% if data['res'] %}
+      <table align="center" style="text-align: center; backdrop-filter: blur(50px); margin-top: 10px;">
+
+            <tr class="tr">
+                <th>Sl.</th>
+                <th>Faculty</th>
+                <th>Qualification</th>
+                <th>Phone</th>
+
+                <th>Email</th>
+            </tr>
+            {% for row in data['res'] %}
+            <tr class="tr">
+                <td>{{loop.index}}</td>
+                <td>{{row['f_name']}}</td>
+                <td>{{row['f_qualification']}}</td>
+                <td>{{row['f_phone']}}</td>
+                <td>{{row['f_mail']}}</td>
+        
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h2>no data</h2>
+        {% endif %}
+
+    </form>
+    <style>
+        th,
+        td {
+            font-size: 20px;
+            padding: 15px;
+        }
+    
+        th{
+            color:rgb(255, 255, 255);
+            background-color: rgba(0, 0, 255, 0.475);
+        }
+        td{
+            color:rgb(0, 0, 0);
+        }
+     
+    </style>
+{% include 'footer.html' %}

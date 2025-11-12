@@ -1,0 +1,52 @@
+{% include 'adminheader.html' %}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+
+    <div class="container"> 
+        <center>
+<form method="post" style="margin-top: -300px;">
+{% if data['check']==0 %}
+<table  style="height: 250px;width:450px;">
+    <tr>
+        <th style="font-size: 35px; color: black;">Reply</th>
+        <td><textarea name="reply" class="form-control" cols="8" rows="5"></textarea></td>
+    </tr>
+    <tr>
+        <td align="center" colspan="3"><input type="submit" value="Reply" name="replay" class=" btn btn-info"></td>
+    </tr>
+</table>
+</center>
+
+{% elif data['res'] %}
+<table align="center" style="text-align: center; backdrop-filter: blur(50px); margin-top: -300px;">
+    
+        <tr class="tr">
+            <th style="font-size: 25px;padding: 15px; color: rgb(255, 255, 255); background-color:rgba(0, 0, 255, 0.475) ;">Sl.</th>
+            <th style="font-size: 25px;padding: 15px; color: rgb(255, 255, 255); background-color:rgba(0, 0, 255, 0.475) ;">Sender</th>
+            <th style="font-size: 25px;padding: 15px; color: rgb(255, 255, 255); background-color:rgba(0, 0, 255, 0.475) ;">Complaint </th>
+            <th style="font-size: 25px;padding: 15px; color: rgb(255, 255, 255); background-color:rgba(0, 0, 255, 0.475) ;">Reply</th>
+            <th style="font-size: 25px;padding: 15px; color: rgb(255, 255, 255); background-color:rgba(0, 0, 255, 0.475) ;">Date</th>
+            
+
+        </tr>
+        {% for row in data['res'] %}
+        <tr class="tr">
+            <td style="font-size: 20; padding: 15px; color: black;">{{loop.index}}</td>
+            <td style="font-size: 20; padding: 15px; color: black;">{{row['user']}}</td>
+            <td  style="font-size: 20; padding: 15px; color: black;">{{row['complaint']}}</td>
+            <td  style="font-size: 20; padding: 15px; color: black;">{{row['reply']}}</td>
+            <td style="font-size: 20; padding: 15px; color: black;">{{row['date']}}</td>
+            
+             <td><a href="?action=reply&id={{row['complaint_id']}}" class=" btn btn-success">REPLY</a></td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+    
+    {% endif %}
+</form>
+</div>
+</section>
+
+{% include 'footer.html' %}

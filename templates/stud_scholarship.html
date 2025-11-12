@@ -1,0 +1,22 @@
+{%include 'student_header.html'%}
+
+{% if data['sch'] %}
+<table>
+    <tr>
+        <th>Sl no</th>
+        <th>Scholarship</th>
+        <th>Details</th>
+    </tr>
+    <tr>
+        {%for i in data['sch'] %}
+        <td>{{loop.index}}</td>
+        <td>{{i['scholarship']}}</td>
+        <td>{{i['details']}}</td>
+        <td><a href="/stud_apply_scholar?schid={{i['scholarship_id']}}">APPLY</a></td>
+        {%endfor%}
+    </tr>
+</table>
+{%endif%}
+
+
+{%include 'footer.html'%}

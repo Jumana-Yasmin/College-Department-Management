@@ -1,0 +1,76 @@
+{% include 'department_header.html' %}
+
+
+
+<!-- <h1 align=center style="color: black;" id="departmentName">Department</h1> -->
+
+
+   
+
+{% if data['res'] %}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+
+    <div class="container"> 
+        <center>
+            <table align="center" style="text-align: center; backdrop-filter: blur(50px); margin-top: -300px;">
+
+    <tr class="tr">
+        <th>Sl.</th>
+        <th>User</th>
+        <th>Type</th>
+ 
+        <th>Date</th>
+        <th>Reason</th>
+
+        <th>Status</th>
+    </tr>
+    {% for row in data['res'] %}
+    <tr class="tr">
+        <td>{{loop.index}}</td>
+        <td>{{row['user']}}</td>
+        <td>{{row['user_type']}}</td>
+      
+        <td>{{row['date']}}</td>
+        <td>{{row['reason']}}</td>
+        <td>{{row['status']}}</td>
+        <td>
+            {% if row['status']=='pending' %}
+        <a href="?action=approve&lv_id={{row['leave_id']}}" class=" btn btn-outline-success">APPROVE</a>
+        <a href="?action=reject&lv_id={{row['leave_id']}}" class="btn btn-danger">REJECT</a></td>
+        {% endif %}
+
+    </tr>
+    {% endfor %}
+</table>
+
+<style>
+    th,td{
+        padding: 15px;
+        color: black;
+    }
+    td{
+        color: rgb(6, 6, 6);
+    }
+
+    #er{
+        margin-left: 500px;
+        margin-top: -200px;
+    }
+</style>
+{% else %}
+<h2>no data</h2>
+{% endif %}
+</div>
+</section>
+{% include 'footer.html' %}
+
+
+<!-- <script>
+    // Function to capitalize the first letter of a string
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Get the element with the id 'departmentName' and set its text content
+    document.getElementById('departmentName').textContent = capitalizeFirstLetter('{{dname}}'+" "+"Department");
+</script> -->

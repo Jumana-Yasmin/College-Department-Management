@@ -1,0 +1,67 @@
+{% include 'adminheader.html' %}
+
+
+      <h2> Manage Scholarship</h2>
+
+
+      <form method="post">
+            {% if data['upd'] %}
+        
+            <table>
+                <tr>
+                    <th>Scholarship Details : </th>
+                    <td><input type="text" name="details" class="form-control" value="{{data['res'][0]['details']}}"></td>
+                </tr>
+               
+                <tr>
+                    <td></td>
+                    <td><input type="submit" name="edit" value="Update" class="a btn-get-startded"></td>
+                </tr>
+            </table>
+        
+        {% else %}
+        <table>
+            <tr>
+                <th>Scholarship Title : </th>
+        
+                <td><input type="text" name="scholar" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Scholarship Details : </th>
+        
+                <td><input type="text" name="details" class="form-control"></td>
+            </tr>
+            <tr>
+                  
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Add" class="btn-get-started a"></td>
+            </tr>
+            {% endif %}
+        </table>
+        </form>
+        <br><br><br><br><br>
+        {% if data['res'] %}
+        <h2>View Department</h2>
+        <table class="tbl">
+            <tr class="tr">
+                <th>Sl.</th>
+                <th>Scholarship</th>
+                <th>Details</th>
+                
+            </tr>
+            {% for row in data['res'] %}
+            <tr class="tr">
+                <td>{{loop.index}}</td>
+                <td>{{row['scholarship']}}</td>
+                <td>{{row['details']}}</td>
+                <td><a href="?action=delete&id={{row['scholarship_id']}}">DELETE</a></td>
+                <td><a href="?action=update&id={{row['scholarship_id']}}">UPDATE</a></td>
+                <td><a href="admin_view_scholarship_appln?id={{row['scholarship_id']}}">View Applications</a></td>
+        
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+{% include 'footer.html' %}

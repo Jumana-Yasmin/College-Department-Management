@@ -1,0 +1,51 @@
+{%include 'student_header.html'%}
+<section id="hero" class="d-flex align-items-center" style="height: 1000px;   background: url('/static/assets/img/hero-img2.jpg'); background-size: cover; background-repeat: no-repeat;">
+
+    <div class="container"> 
+        <center>
+<form action="" method="post">
+    <table   align="center" style="text-align: center; backdrop-filter: blur(100px); margin-top: -300px;">
+
+        <tr>
+            <th>Complaint :</th>
+            <td><input type="text" name="complaint" class="form-control"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="submit" class="btn btn-outline-info" ></td>
+        </tr>
+    </table>
+</form>
+</center>
+<center>
+
+    <table align="center" style="text-align: center; backdrop-filter: blur(50px); margin-top: 100px;">
+
+    <tr class="tr">
+        <th>Sl.</th>
+        <th>Complaint</th>
+        <th>Reply</th>
+        <th>Date</th>
+    </tr>
+    {% for row in data['res']%}
+    <tr class="tr">
+        <td>{{loop.index}}</td>
+        <td>{{row['complaint']}}</td>
+        <td>{{row['reply']}}</td>
+        <td>{{row['date']}}</td>
+    </tr>
+
+    {% endfor %}
+</table>
+</center>
+</div>
+</section>
+<style>
+    th,td{
+        padding: 15px;
+        color: black;
+    }
+</style>
+
+
+{%include 'footer.html'%}

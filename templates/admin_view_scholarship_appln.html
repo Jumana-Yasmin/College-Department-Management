@@ -1,0 +1,25 @@
+{% include 'adminheader.html' %}
+{%if data['res']%}
+
+      <h2>Welcome View Scholarship Applications</h2>
+<table>
+      <tr>
+            <th>Sl no</th>
+            <th>Student</th>
+            <th>Department</th>
+            <th>Document</th>
+            
+      </tr>
+      {%for i in data['res']%}
+      <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['s_name']}}</td>
+            <td>{{i['d_name']}}</td>
+            <td><a href="{{i['documents']}}" download="">Documents</a></td>
+      </tr>
+      {%endfor%}
+</table>
+{%else%}
+<h2>no data</h2>
+      {%endif%}
+{% include 'footer.html' %}
